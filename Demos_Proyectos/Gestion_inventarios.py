@@ -2,11 +2,14 @@
 
 import typer
 
-N_CAMPOS = 4 # Numero de objetos (2 botellas de agua p.e), cantidad del objeto(33 cl p.e), numero identificador (N1033 p.e, cada objeto con id),  descripción del objeto
+# Numero de objetos (2 botellas de agua p.e), cantidad del objeto(33 cl p.e), numero identificador (N1033 p.e, cada objeto con id),  descripción del objeto
+N_CAMPOS = 4
+
 
 def ver_inventario(l):
-    for k,v in l.items():
+    for k, v in l.items():
         print(k, v)
+
 
 def nuevo_objeto(l):
     print("¿Que objeto quieres añadir? ['exit']\n$ ", end="")
@@ -21,11 +24,13 @@ def nuevo_objeto(l):
             i = 0
             l[objeto] = [0]*N_CAMPOS
             while i < N_CAMPOS:
-                elemento = input(f"Introduzca la información del campo numero '{i+1}'\n$ ")
+                elemento = input(
+                    f"Introduzca la información del campo numero '{i+1}'\n$ ")
                 l[objeto][i] = elemento
                 i += 1
             print("Información introducida correctamente")
         print("¿Quieres añadir algun objeto más? ['exit']")
+
 
 def eliminar_objeto(l):
     print("¿Que objeto quieres eliminar? ['exit']\n$ ", end="")
@@ -42,6 +47,7 @@ def eliminar_objeto(l):
             print("Por favor, introduce un objeto de la lista")
             print("¿Que objeto quieres eliminar? ['exit']\n$ ", end="")
     return
+
 
 def editar_objeto(l):
     print("¿Que objeto quieres editar? ['exit']\n$ ", end="")
@@ -63,7 +69,8 @@ def editar_objeto(l):
             i = 0
             while i < N_CAMPOS:
                 if typer.confirm(f"¿Le quieres cambiar la informacion del campo numero '{i+1}'?"):
-                    elemento = input(f"Introduzca la información del campo\n$ ")
+                    elemento = input(
+                        f"Introduzca la información del campo\n$ ")
                     l[objeto][i] = elemento
                 else:
                     l[objeto][i] = temp[i]
@@ -75,9 +82,11 @@ def editar_objeto(l):
 
 
 def main():
-    lista_objetos = {'a':[0,0,0,0], 'b':[0,0,0,0], 'c':[0,0,0,0], 'd':[0,0,0,0]} # Esto son ejemplos vaya
+    lista_objetos = {'a': [0, 0, 0, 0], 'b': [0, 0, 0, 0], 'c': [
+        0, 0, 0, 0], 'd': [0, 0, 0, 0]}  # Esto son ejemplos vaya
     while True:
-        accion = input("¿Que deseas hacer? ['i'(ver inventario), 'n'(añadir objeto), 'd'(eliminar objeto), 'e'(editar objeto), 'exit']\n$ ")
+        accion = input(
+            "¿Que deseas hacer? ['i'(ver inventario), 'n'(añadir objeto), 'd'(eliminar objeto), 'e'(editar objeto), 'exit']\n$ ")
         if (accion == 'i'):
             ver_inventario(lista_objetos)
         elif (accion == 'n'):
@@ -92,6 +101,7 @@ def main():
         else:
             print("Por favor, introduce un comando posible")
             continue
+
 
 if __name__ == "__main__":
     main()
